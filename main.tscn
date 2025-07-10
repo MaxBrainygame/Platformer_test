@@ -1,3 +1,21 @@
-[gd_scene format=3 uid="uid://drefpi4qq18v0"]
+[gd_scene load_steps=4 format=3 uid="uid://drefpi4qq18v0"]
+
+[ext_resource type="Texture2D" uid="uid://c22qr4ljie3yu" path="res://assets/backgrounds/background_color_hills.png" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://idsf161h61xs" path="res://level.tscn" id="2_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://cejlj81s6x5bw" path="res://player.tscn" id="3_h2yge"]
 
 [node name="Main" type="Node"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_ig7tw")
+
+[node name="Level" parent="." instance=ExtResource("2_0xm2m")]
+position = Vector2(0, 16)
+
+[node name="Player" parent="." instance=ExtResource("3_h2yge")]
+position = Vector2(32, 268)
