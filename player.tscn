@@ -1,7 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://cejlj81s6x5bw"]
+[gd_scene load_steps=10 format=3 uid="uid://cejlj81s6x5bw"]
 
 [ext_resource type="Script" uid="uid://b6dfd6sbxnq2f" path="res://player.gd" id="1_onrkg"]
+[ext_resource type="Texture2D" uid="uid://dp26r80hpay4r" path="res://assets/characters/character_yellow_duck.png" id="2_2hs0m"]
 [ext_resource type="Texture2D" uid="uid://dfmjynjdqqw27" path="res://assets/characters/character_yellow_walk_a.png" id="2_i3pqv"]
+[ext_resource type="Texture2D" uid="uid://vuy45wp160dv" path="res://assets/characters/character_yellow_hit.png" id="3_1jxqw"]
 [ext_resource type="Texture2D" uid="uid://cgpii7b0oa0qy" path="res://assets/characters/character_yellow_idle.png" id="3_2hs0m"]
 [ext_resource type="Texture2D" uid="uid://8xwv66cc67g4" path="res://assets/characters/character_yellow_walk_b.png" id="3_hqtel"]
 [ext_resource type="Texture2D" uid="uid://dkrkobkr1mcwu" path="res://assets/characters/character_yellow_jump.png" id="3_sweqy"]
@@ -12,6 +14,17 @@ height = 96.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_sweqy"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_2hs0m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_1jxqw")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("3_2hs0m")
@@ -50,5 +63,6 @@ shape = SubResource("CapsuleShape2D_onrkg")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(66, 72)
 sprite_frames = SubResource("SpriteFrames_sweqy")
-animation = &"idle"
-frame_progress = 0.838982
+animation = &"attack"
+frame_progress = 0.784509
+speed_scale = 0.1

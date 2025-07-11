@@ -1,6 +1,5 @@
-extends TileMapLayer
+extends Node
 
-signal win_game
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -12,5 +11,9 @@ func _process(delta: float) -> void:
 	pass
 
 
-func _on_exit_body_entered(body: Node2D) -> void:
-	win_game.emit()
+func _on_hud_start_game() -> void:
+	$Player.start($StartPosition.position)
+
+func _on_level_win_game() -> void:
+	$Player.hide()
+	$HUD.show_win_game()	

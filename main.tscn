@@ -1,10 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://drefpi4qq18v0"]
+[gd_scene load_steps=6 format=3 uid="uid://drefpi4qq18v0"]
 
 [ext_resource type="Texture2D" uid="uid://c22qr4ljie3yu" path="res://assets/backgrounds/background_color_hills.png" id="1_ig7tw"]
+[ext_resource type="Script" uid="uid://dmtnbjx5yuysw" path="res://main.gd" id="1_lquwl"]
 [ext_resource type="PackedScene" uid="uid://idsf161h61xs" path="res://level.tscn" id="2_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://cejlj81s6x5bw" path="res://player.tscn" id="3_h2yge"]
+[ext_resource type="PackedScene" uid="uid://cmangkhb4otbc" path="res://hud.tscn" id="4_1bvp3"]
 
 [node name="Main" type="Node"]
+script = ExtResource("1_lquwl")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 anchors_preset = 15
@@ -18,4 +21,13 @@ texture = ExtResource("1_ig7tw")
 position = Vector2(0, 16)
 
 [node name="Player" parent="." instance=ExtResource("3_h2yge")]
-position = Vector2(32, 268)
+visible = false
+position = Vector2(-109, -32)
+
+[node name="HUD" parent="." instance=ExtResource("4_1bvp3")]
+
+[node name="StartPosition" type="Marker2D" parent="."]
+position = Vector2(95, 320)
+
+[connection signal="win_game" from="Level" to="." method="_on_level_win_game"]
+[connection signal="start_game" from="HUD" to="." method="_on_hud_start_game"]
