@@ -2,13 +2,14 @@
 
 [ext_resource type="Texture2D" uid="uid://c22qr4ljie3yu" path="res://assets/backgrounds/background_color_hills.png" id="1_ig7tw"]
 [ext_resource type="Script" uid="uid://dmtnbjx5yuysw" path="res://main.gd" id="1_lquwl"]
-[ext_resource type="PackedScene" uid="uid://idsf161h61xs" path="res://level.tscn" id="2_0xm2m"]
-[ext_resource type="PackedScene" uid="uid://cejlj81s6x5bw" path="res://player.tscn" id="3_h2yge"]
-[ext_resource type="PackedScene" uid="uid://cmangkhb4otbc" path="res://hud.tscn" id="4_1bvp3"]
-[ext_resource type="PackedScene" uid="uid://cemiu6j0r8vr2" path="res://enemy.tscn" id="6_7mycd"]
+[ext_resource type="PackedScene" uid="uid://idsf161h61xs" path="res://level/level.tscn" id="2_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://cejlj81s6x5bw" path="res://player/player.tscn" id="3_h2yge"]
+[ext_resource type="PackedScene" uid="uid://cmangkhb4otbc" path="res://hud/hud.tscn" id="4_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://cemiu6j0r8vr2" path="res://enemy/enemy.tscn" id="6_7mycd"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_lquwl")
+enemy_scene = ExtResource("6_7mycd")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 anchors_preset = 15
@@ -28,10 +29,11 @@ position = Vector2(-109, -32)
 [node name="HUD" parent="." instance=ExtResource("4_1bvp3")]
 
 [node name="StartPosition" type="Marker2D" parent="."]
-position = Vector2(95, 320)
+position = Vector2(31, 273)
 
-[node name="Enemy" parent="." instance=ExtResource("6_7mycd")]
-position = Vector2(226, 245)
+[node name="EnemyPosition" type="Marker2D" parent="."]
+position = Vector2(371, 238)
 
 [connection signal="win_game" from="Level" to="." method="_on_level_win_game"]
+[connection signal="game_over" from="Player" to="." method="_on_player_game_over"]
 [connection signal="start_game" from="HUD" to="." method="_on_hud_start_game"]

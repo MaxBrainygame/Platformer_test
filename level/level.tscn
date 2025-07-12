@@ -1,13 +1,7 @@
-[gd_scene load_steps=7 format=4 uid="uid://idsf161h61xs"]
+[gd_scene load_steps=6 format=4 uid="uid://idsf161h61xs"]
 
 [ext_resource type="Texture2D" uid="uid://crdicbwv5d752" path="res://assets/tiles/spritesheet-tiles-default.png" id="1_u52ul"]
-[ext_resource type="Script" uid="uid://cp3atihum4kuk" path="res://level.gd" id="2_vonw3"]
-
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_vonw3"]
-vertices = PackedVector2Array(32, 32, -32, 32, -32, -32, 32, -32)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)])
-agent_radius = 0.0
+[ext_resource type="Script" uid="uid://cp3atihum4kuk" path="res://level/level.gd" id="2_vonw3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vonw3"]
 texture = ExtResource("1_u52ul")
@@ -210,7 +204,6 @@ texture_region_size = Vector2i(64, 64)
 15:10/0 = 0
 16:10/0 = 0
 16:10/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
-16:10/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_vonw3")
 0:11/0 = 0
 1:11/0 = 0
 2:11/0 = 0
@@ -337,7 +330,6 @@ texture_region_size = Vector2i(64, 64)
 tile_size = Vector2i(64, 64)
 physics_layer_0/collision_layer = 1
 physics_layer_0/collision_mask = 6
-navigation_layer_0/layers = 1
 sources/1 = SubResource("TileSetAtlasSource_vonw3")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u52ul"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://cejlj81s6x5bw"]
 
-[ext_resource type="Script" uid="uid://b6dfd6sbxnq2f" path="res://player.gd" id="1_onrkg"]
+[ext_resource type="Script" uid="uid://b6dfd6sbxnq2f" path="res://player/player.gd" id="1_onrkg"]
 [ext_resource type="Texture2D" uid="uid://dp26r80hpay4r" path="res://assets/characters/character_yellow_duck.png" id="2_2hs0m"]
 [ext_resource type="Texture2D" uid="uid://dfmjynjdqqw27" path="res://assets/characters/character_yellow_walk_a.png" id="2_i3pqv"]
 [ext_resource type="Texture2D" uid="uid://vuy45wp160dv" path="res://assets/characters/character_yellow_hit.png" id="3_1jxqw"]
@@ -86,5 +86,5 @@ step = 1.0
 
 [node name="DamageCast" type="RayCast2D" parent="."]
 position = Vector2(68, 109)
-target_position = Vector2(56, -2)
+target_position = Vector2(55, 0)
 collision_mask = 4

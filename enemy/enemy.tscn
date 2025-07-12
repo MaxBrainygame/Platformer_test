@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://cemiu6j0r8vr2"]
 
-[ext_resource type="Script" uid="uid://ctcdpsrqjh4er" path="res://enemy.gd" id="1_epg4t"]
+[ext_resource type="Script" uid="uid://ctcdpsrqjh4er" path="res://enemy/enemy.gd" id="1_epg4t"]
 [ext_resource type="Texture2D" uid="uid://blaf1frs7l71k" path="res://assets/enemies/snail_shell.png" id="1_iifgy"]
 [ext_resource type="Texture2D" uid="uid://csuqalqnhuc5l" path="res://assets/enemies/snail_rest.png" id="2_epg4t"]
 [ext_resource type="Texture2D" uid="uid://b6d6adxl7bsty" path="res://assets/enemies/snail_walk_b.png" id="3_3yqyl"]
@@ -55,20 +55,17 @@ script = ExtResource("1_epg4t")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(128, 388)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_iifgy")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(128, 384)
-scale = Vector2(1, 1)
 sprite_frames = SubResource("SpriteFrames_e1ltt")
 animation = &"attack"
-frame_progress = 0.502601
+frame_progress = 0.110091
 speed_scale = 0.5
 
 [node name="Detector" type="Area2D" parent="."]
 position = Vector2(128, 384)
-scale = Vector2(1, 1)
 collision_layer = 4
 collision_mask = 2
 
