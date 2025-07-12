@@ -27,7 +27,7 @@ func _start_game_again() -> void:
 	message_label.show()
 	start_button.show()
 	
-func show_message(text) -> void:
+func show_message(text: String) -> void:
 	message_label.text = text
 	message_label.show()
 	message_timer.start()

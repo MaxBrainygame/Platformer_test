@@ -1,0 +1,106 @@
+[gd_scene load_steps=10 format=3 uid="uid://cemiu6j0r8vr2"]
+
+[ext_resource type="Script" uid="uid://ctcdpsrqjh4er" path="res://enemy.gd" id="1_epg4t"]
+[ext_resource type="Texture2D" uid="uid://blaf1frs7l71k" path="res://assets/enemies/snail_shell.png" id="1_iifgy"]
+[ext_resource type="Texture2D" uid="uid://csuqalqnhuc5l" path="res://assets/enemies/snail_rest.png" id="2_epg4t"]
+[ext_resource type="Texture2D" uid="uid://b6d6adxl7bsty" path="res://assets/enemies/snail_walk_b.png" id="3_3yqyl"]
+[ext_resource type="Texture2D" uid="uid://bn4ugborua0ho" path="res://assets/enemies/snail_walk_a.png" id="4_wujgv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iifgy"]
+size = Vector2(64, 56)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_e1ltt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_iifgy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_epg4t")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_epg4t")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_3yqyl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_wujgv")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_epg4t"]
+radius = 152.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_epg4t"]
+size = Vector2(16, 32)
+
+[node name="Enemy" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("1_epg4t")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(128, 388)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_iifgy")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(128, 384)
+scale = Vector2(1, 1)
+sprite_frames = SubResource("SpriteFrames_e1ltt")
+animation = &"attack"
+frame_progress = 0.502601
+speed_scale = 0.5
+
+[node name="Detector" type="Area2D" parent="."]
+position = Vector2(128, 384)
+scale = Vector2(1, 1)
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Detector"]
+shape = SubResource("CircleShape2D_epg4t")
+
+[node name="Damage" type="Area2D" parent="."]
+visible = false
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Damage"]
+position = Vector2(96, 392)
+shape = SubResource("RectangleShape2D_epg4t")
+
+[node name="DamageCast" type="RayCast2D" parent="."]
+position = Vector2(128, 384)
+target_position = Vector2(-48, 0)
+collision_mask = 2
+
+[node name="DamageTimer" type="Timer" parent="."]
+wait_time = 0.5
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+offset_left = 96.0
+offset_top = 336.0
+offset_right = 160.0
+offset_bottom = 363.0
+step = 1.0
+
+[connection signal="body_entered" from="Detector" to="." method="_on_detector_body_entered"]
+[connection signal="body_exited" from="Detector" to="." method="_on_detector_body_exited"]
+[connection signal="body_entered" from="Damage" to="." method="_on_damage_body_entered"]
+[connection signal="body_exited" from="Damage" to="." method="_on_damage_body_exited"]
+[connection signal="timeout" from="DamageTimer" to="." method="_on_damage_timer_timeout"]
